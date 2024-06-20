@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2905d594-ee9d-43a5-bc1f-300eacb4ef1a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="desde" class="java.lang.String"/>
+	<parameter name="hasta" class="java.lang.String"/>
+	<parameter name="Empresa" class="java.lang.String"/>
+	<parameter name="fecha1" class="java.lang.String"/>
+	<parameter name="fecha2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[call sp_ReportePedido($P{desde},$P{hasta})]]>
+	</queryString>
+	<field name="idpedido" class="java.lang.String"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="membresia" class="java.lang.String"/>
+	<field name="total" class="java.lang.Double"/>
+	<variable name="total_1" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="176" y="0" width="227" height="20" uuid="2d78635a-7fbf-4d70-813c-bc1cd6f41988"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTDE DE PEDIDOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="24" width="50" height="15" uuid="2344b819-e346-425d-bd72-76287f0aad0c"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="44" width="51" height="12" uuid="37c3498d-41a7-43a4-80ee-eb76c34cf01c"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Reporte del:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="44" width="9" height="12" uuid="68657d69-df8a-4b22-957e-1a5f6521e684"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[al]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="24" width="306" height="15" uuid="42ec0c9e-7c41-4142-af23-41a581d642e9"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Empresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="62" y="44" width="48" height="12" uuid="4a3fb356-9583-4f86-8b0c-b861c681596e"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="44" width="57" height="12" uuid="18d002ea-dcfb-4630-bc7b-94c5d15269c5"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha2}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="403" y="0" width="25" height="29" uuid="2b8a2f16-5b4b-4f5f-8ae6-529cc122e740"/>
+				<imageExpression><![CDATA["C:\\Users\\ELIAS\\Documents\\github\\algoritmos\\trabajo-algoritmos-y-estructura-de-datos\\src\\assets\\17362_edit_icon.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement x="10" y="2" width="526" height="20" backcolor="#FFFFCC" uuid="f24df412-82bc-4434-8c11-88c7428656b4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="33" y="2" width="100" height="20" uuid="d5f707b2-5a43-4d9a-9c5c-15afd6b3bf73"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[N° PEDIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="2" width="100" height="20" uuid="cd5da4f0-50ab-436d-9e38-385d8c0456e7"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="2" width="100" height="20" uuid="42c270c3-180f-47b7-a25b-c5a9ab69353f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[MEMBRESIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="2" width="100" height="20" uuid="bf859683-4999-4537-8e37-ed32e929cb6f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="33" y="1" width="100" height="20" uuid="1aa6319f-6c58-4d8d-ac22-39efddc9f8c1"/>
+				<textFieldExpression><![CDATA[$F{idpedido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="1" width="100" height="20" uuid="30ba3920-3a43-4ad1-bd37-f0c07afe0256"/>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="1" width="100" height="20" uuid="feacb2f2-023f-4949-aa43-3986b9b8393b"/>
+				<textFieldExpression><![CDATA[$F{membresia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="1" width="100" height="20" uuid="2e9493d9-7413-49d1-bf00-f699c341da47"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="416" y="0" width="100" height="20" uuid="431953e4-45d3-4cf7-8d9a-2a25415676c6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{total_1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="21" y="3" width="495" height="1" uuid="24a2a2f1-d131-440a-83e9-103423036315"/>
+			</line>
+			<staticText>
+				<reportElement x="316" y="4" width="100" height="16" uuid="ab074832-ff6d-4469-a7e5-8ad100302dc7"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="9" y="0" width="80" height="20" uuid="ef6e350b-edfb-415f-9806-6673d3f1ba65"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="89" y="0" width="40" height="20" uuid="2c11a38e-fbad-4c4b-a621-e8cab26d3b5b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
